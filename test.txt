@@ -1,3 +1,0 @@
-# This is a fake key for testing purposes only
-aws_key = "AKIAIOSFODNN7EXAMPLE"
-aws_secret = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
