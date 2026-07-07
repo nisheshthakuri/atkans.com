@@ -8,15 +8,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 1 # We only need the current files, not the whole history for a filesystem scan
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-    - name: Force Filesystem Secret Scan
-      uses: trufflesecurity/trufflehog@main
-      with:
-        path: ./
-        base: "" # Clears the git branch tracking
-        head: "" # Clears the git commit tracking
-        extra_args: filesystem --results=verified,unverified
+      - name: Force Filesystem Secret Scan
+        run: |
+          docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest \
+            filesystem /repo \
+            --results=verified,unverified \
+            --fail
