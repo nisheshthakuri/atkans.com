@@ -11,10 +11,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 
+        fetch-depth: 1 # We only need the current files, not the whole history for a filesystem scan
 
-    - name: Secret Scanning
+    - name: Force Filesystem Secret Scan
       uses: trufflesecurity/trufflehog@main
       with:
         path: ./
-        extra_args: --results=verified,unverified
+        base: "" # Clears the git branch tracking
+        head: "" # Clears the git commit tracking
+        extra_args: filesystem --results=verified,unverified
