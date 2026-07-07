@@ -11,10 +11,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 # Fetches all history
+        fetch-depth: 0 
 
-    - name: Force Full Secret Scan
+    - name: Secret Scanning
       uses: trufflesecurity/trufflehog@main
       with:
-        # We drop the results filter and explicitly tell it NOT to require live verification
-        extra_args: --only-verified=false
+        path: ./
+        extra_args: --results=verified,unverified
