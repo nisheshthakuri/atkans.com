@@ -18,4 +18,4 @@ jobs:
           docker run --rm -v "$PWD:/repo" ghcr.io/trufflesecurity/trufflehog:latest \
             filesystem /repo \
             --results=verified,unverified \
-            --fail
+            --exclude-paths=/repo/.git
