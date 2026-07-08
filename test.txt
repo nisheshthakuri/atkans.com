@@ -1,3 +1,2 @@
-# This is a fake key for testing purposes only
-aws_key = "AKIAIOSFODNN7EXAMPLE"
-aws_secret = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+aws_key = "$AWS_KEY_ID"
+aws_secret = "$AWS_SECRET_ACCESS_KEY"
